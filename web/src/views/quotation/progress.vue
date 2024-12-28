@@ -15,7 +15,7 @@
       />
       <n-step
         title="Review"
-        description="审查工作结果"
+        description="审查结果"
       />
       <n-step
         title="Documentation"
