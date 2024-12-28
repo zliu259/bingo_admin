@@ -39,4 +39,7 @@ export default {
   deleteDept: (params = {}) => request.delete('/dept/delete', { params }),
   // auditlog
   getAuditLogList: (params = {}) => request.get('/auditlog/list', { params }),
+  // business
+  getProjectList: () => request.get('/business/projects'),
+  getProjectDetails: (uuid) => request.get(`/business/project/${uuid}`),
 }

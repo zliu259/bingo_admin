@@ -1,6 +1,6 @@
 <template>
   <router-link h-60 f-c-c to="/">
-    <icon-custom-logo text-36 color-primary></icon-custom-logo>
+    <img :src="logo" alt="Logo" class="logo" />
     <h2
       v-show="!appStore.collapsed"
       ml-2
@@ -18,7 +18,15 @@
 
 <script setup>
 import { useAppStore } from '@/store'
-const title = import.meta.env.VITE_TITLE
+import logo from '@/assets/33fdb073c5f65d762bfb666444b2d58.png'
 
+const title = import.meta.env.VITE_TITLE
 const appStore = useAppStore()
 </script>
+
+<style scoped>
+.logo {
+  width: 80px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+</style>

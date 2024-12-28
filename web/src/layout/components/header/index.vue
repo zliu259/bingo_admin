@@ -4,6 +4,7 @@
     <BreadCrumb ml-15 hidden sm:block />
   </div>
   <div ml-auto flex items-center>
+    <Time />
     <Languages />
     <ThemeMode />
     <GithubSite />
@@ -20,4 +21,5 @@ import UserAvatar from './components/UserAvatar.vue'
 import GithubSite from './components/GithubSite.vue'
 import ThemeMode from './components/ThemeMode.vue'
 import Languages from './components/Languages.vue'
+import Time from './components/Time.vue'
 </script>
