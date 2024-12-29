@@ -24,7 +24,7 @@ const columns = createColumns({
     message.info(`send mail to ${rowData.name}`)
   },
   showDetails(rowData) {
-    emit('show-details', rowData.uuid)
+    emit('show-details', rowData.job_id)
   },
 })
 const pagination = {
@@ -42,24 +42,23 @@ onMounted(async () => {
   }
 })
 
-function createColumns({ sendMail, showDetails }) {
+function createColumns({ showDetails }) {
   return [
     {
-      title: 'Status',
-      key: 'status',
+      title: 'Active',
+      key: 'active',
       render(row) {
         const statusColorMap = {
-          Pending: 'warning',
-          Completed: 'success',
-          'In Progress': 'info',
+          True: 'success',
+          False: 'warning',
         }
         return h(
           NTag,
           {
-            type: statusColorMap[row.status] || 'default',
+            type: statusColorMap[row.active] || 'default',
             bordered: false,
           },
-          { default: () => row.status }
+          { default: () => row.active }
         )
       },
     },
@@ -79,24 +78,30 @@ function createColumns({ sendMail, showDetails }) {
       title: 'Job Type',
       key: 'job_type',
       render(row) {
-        const jobTypeColorMap = {
-          'Type 1': 'info',
-          'Type 2': 'success',
-          'Type 3': 'warning',
+        const jobTypeMap = {
+          1: 'Translation',
+          2: 'Interpretation',
+          3: 'Certified Copy',
         }
+        const jobTypeColorMap = {
+          1: 'info',
+          2: 'success',
+          3: 'warning',
+        }
+        const jobType = jobTypeMap[row.job_type] || 'Unknown'
         return h(
           NTag,
           {
-            type: jobTypeColorMap[row.jobType] || 'default',
+            type: jobTypeColorMap[row.job_type] || 'default',
             bordered: false,
           },
-          { default: () => row.jobType }
+          { default: () => jobType }
         )
       },
     },
     {
       title: 'Due Date',
-      key: 'due',
+      key: 'due_date',
     },
     {
       title: 'Action',
@@ -138,6 +143,6 @@ const message = useMessage()
 <style scoped>
 .main-table {
   height: 50%;
-  margin: 20px;
+  margin: 10px;
 }
 </style>

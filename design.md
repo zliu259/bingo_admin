@@ -50,7 +50,7 @@ class Project:
     # basic info
     job_id: uuid
     date: datetime
-    job_type: str # Translation, Interpretation, Certified Copy
+    job_type: int # 1 Translation, 2 Interpretation, 3 Certified Copy
     due_date: datetime
     
     # client info
@@ -78,6 +78,9 @@ class Project:
     payment_status: bool # True if payment is completed
     payment_method: str # WeChat, Alipay, Bank Transfer, etc.
     
+    #system info
+    created_by: str
+    created_time: datetime
     
 
 ~~~
